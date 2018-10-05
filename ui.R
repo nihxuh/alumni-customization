@@ -140,8 +140,8 @@ body <- dashboardBody(
     tabItem("project",
       fluidRow(
         column(12, align="right",
-          actionButton(inputId = "goHome", label = "Return to Wayne State University Career Services Website", class="pre_anchor",
-                       onclick ="javascript:parent.window.location.href='http://careerservices.wayne.edu/'"),
+          actionButton(inputId = "goHome", label =linkText, class="pre_anchor",
+                       onclick =linkJScript),
           HTML("<p></p>")
         )
       ),
@@ -165,8 +165,8 @@ body <- dashboardBody(
     tabItem("taxonomy",
       fluidRow(
         column(12, align="right",
-               actionButton(inputId = "goHome", label = "Return to Wayne State University Career Services Website", class="pre_anchor",
-                            onclick ="javascript:parent.window.location.href='http://careerservices.wayne.edu/'"),
+               actionButton(inputId = "goHome", label = linkText, class="pre_anchor",
+                            onclick =linkJScript),
                HTML("<p></p>")
         )
       ),
@@ -202,8 +202,8 @@ body <- dashboardBody(
     tabItem("demograph",
       fluidRow(
         column(12, align="right",
-               actionButton(inputId = "goHome", label = "Return to Wayne State University Career Services Website", class="pre_anchor",
-                            onclick ="javascript:parent.window.location.href='http://careerservices.wayne.edu/'"),
+               actionButton(inputId = "goHome", label = linkText, class="pre_anchor",
+                            onclick =linkJScript),
                HTML("<p></p>")
         )
       ),
@@ -238,8 +238,8 @@ body <- dashboardBody(
     tabItem("location",
       fluidRow(
         column(12, align="right",
-               actionButton(inputId = "goHome", label = "Return to Wayne State University Career Services Website", class="pre_anchor",
-                            onclick ="javascript:parent.window.location.href='http://careerservices.wayne.edu/'"),
+               actionButton(inputId = "goHome", label = linkText, class="pre_anchor",
+                            onclick =linkJScript),
                HTML("<p></p>")
         )
       ),
@@ -274,8 +274,8 @@ body <- dashboardBody(
     tabItem("general",
       fluidRow(
         column(12, align="right",
-               actionButton(inputId = "goHome", label = "Return to Wayne State University Career Services Website", class="pre_anchor",
-                            onclick ="javascript:parent.window.location.href='http://careerservices.wayne.edu/'"),
+               actionButton(inputId = "goHome", label =linkText, class="pre_anchor",
+                            onclick =linkJScript),
                HTML("<p></p>")
         )
       ),
@@ -309,8 +309,8 @@ body <- dashboardBody(
     tabItem("relation",
       fluidRow(
         column(12, align="right",
-               actionButton(inputId = "goHome", label = "Return to Wayne State University Career Services Website", class="pre_anchor",
-                            onclick ="javascript:parent.window.location.href='http://careerservices.wayne.edu/'"),
+               actionButton(inputId = "goHome", label =linkText, class="pre_anchor",
+                            onclick =linkJScript),
                HTML("<p></p>")
         )
       ),
@@ -341,8 +341,8 @@ body <- dashboardBody(
     # tabItem("highlight",
     #   fluidRow(
     #     column(12, align="right",
-    #            actionButton(inputId = "goHome", label = "Return to Wayne State University Career Services Website", class="pre_anchor",
-    #                         onclick ="javascript:parent.window.location.href='http://careerservices.wayne.edu/'"),
+    #            actionButton(inputId = "goHome", label =linkText, class="pre_anchor",
+    #                         onclick =linkJScript),
     #            HTML("<p></p>")
     #     )
     #   ),
@@ -371,8 +371,8 @@ body <- dashboardBody(
     tabItem("trend",
       fluidRow(
         column(12, align="right",
-               actionButton(inputId = "goHome", label = "Return to Wayne State University Career Services Website", class="pre_anchor",
-                            onclick ="javascript:parent.window.location.href='http://careerservices.wayne.edu/'"),
+               actionButton(inputId = "goHome", label =linkText, class="pre_anchor",
+                            onclick =linkJScript),
                HTML("<p></p>")
         )
       ),
@@ -401,16 +401,16 @@ body <- dashboardBody(
     tabItem("time",
       fluidRow(
         column(12, align="right",
-               actionButton(inputId = "goHome", label = "Return to Wayne State University Career Services Website", class="pre_anchor",
-                            onclick ="javascript:parent.window.location.href='http://careerservices.wayne.edu/'"),
+               actionButton(inputId = "goHome", label =linkText, class="pre_anchor",
+                            onclick =linkJScript),
                HTML("<p></p>")
         )
       ),
       fluidRow(
         box(title = "TRAINING TIME", width = 12, solidHeader = TRUE,
-            paste0("The overall average time spent at WSU was ", cntAvgTime, 
+            paste0("The overall average time spent at ", nameInstitute, " was ", cntAvgTime, 
                    " years. Sector Specific: Those entering the Academia sector spent an average of ", cntAcdTime,
-                   " years at WSU, Government ~ ", cntGvnTime, " years, and For-Profit sector ~ ", cntPrfTime, " years.")
+                   " years at ", nameInstitute, " , Government ~ ", cntGvnTime, " years, and For-Profit sector ~ ", cntPrfTime, " years.")
         )
       ),
       fluidRow(
@@ -437,15 +437,15 @@ body <- dashboardBody(
     tabItem("country",
       fluidRow(
         column(12, align="right",
-               actionButton(inputId = "goHome", label = "Return to Wayne State University Career Services Website", class="pre_anchor",
-                            onclick ="javascript:parent.window.location.href='http://careerservices.wayne.edu/'"),
+               actionButton(inputId = "goHome", label =linkText, class="pre_anchor",
+                            onclick =linkJScript),
                HTML("<p></p>")
         )
       ),
       fluidRow(
         box(
           title = "COMPARISON OF ALUMNI BASED ON THEIR COUNTRY OF ORIGIN", width = 12, solidHeader = TRUE,
-            paste0("The ", paste(top5Ctry, collapse=', '), " are the ‘top five’ countries from which most WSU trainees originate. 
+            paste0("The ", paste(top5Ctry, collapse=', '), " are the ‘top five’ countries from which most ", nameInstitute, " trainees originate. 
                    There are some distinct differences in career outcomes depending on the country that a student originates from.  
                     We see differenes in the types of jobs they enter into, differences in gender distribution, differences in training time, 
                    and differences in job location.")
@@ -475,8 +475,8 @@ body <- dashboardBody(
     tabItem("degree",
       fluidRow(
         column(12, align="right",
-               actionButton(inputId = "goHome", label = "Return to Wayne State University Career Services Website", class="pre_anchor",
-                            onclick ="javascript:parent.window.location.href='http://careerservices.wayne.edu/'"),
+               actionButton(inputId = "goHome", label =linkText, class="pre_anchor",
+                            onclick =linkJScript),
                HTML("<p></p>")
         )
       ),

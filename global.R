@@ -18,11 +18,18 @@ library(sunburstR)
 library(gridExtra)
 
 # read in data
-dataGroup <- read.csv("sourceData_WSU.csv")
+dataGroup <- read.csv("sourceData.csv")
 # count of alumni
 alnCount = nrow(dataGroup)
 # get intitute name
 nameInstitute <- dataGroup$institute[1]
+
+
+# Link out text label and javascript
+#   Here we use 'Google Career Website' and its URL 'https://careers.google.com/' as example   
+#   Please replace this with your own values
+linkText = "Return to Google Career Website"
+linkJScript = "javascript:parent.window.location.href='https://careers.google.com/'"
 
 
 # convert all factor columns to character columns 
@@ -327,54 +334,3 @@ setType <- names(head(sort(typeCnt, decreasing = TRUE), 1))
 funcCnt <- table(dataGroup[,"job_function"])
 setFunc <- names(head(sort(funcCnt, decreasing = TRUE), 1))
 
-
-# # average time in WSU by major field
-# dfTimeMajrAll <- dataGroup %>% group_by(major) %>% summarise(avg_time=round(mean(train_time),digits = 1), min_time=min(train_time), max_time=max(train_time), num_data=n())
-# dfTimeMajrAll$major <- as.character(dfTimeMajrAll$major)
-# dfTimeMajrAll <- bind_rows(dfTimeMajrAll, dataGroup %>% summarise(avg_time=round(mean(train_time),digits = 1), min_time=min(train_time), max_time=max(train_time), num_data=n()) %>% mutate(major="All degree"))
-# dfTimeMajrYrs <- dataGroup %>% group_by(years, major) %>% summarise(avg_time=round(mean(train_time),digits = 1), min_time=min(train_time), max_time=max(train_time), num_data=n())
-# dfTimeMajrYrs$major <- as.character(dfTimeMajrYrs$major)
-# dfTimeMajrYrs <- bind_rows(dfTimeMajrYrs, dataGroup %>% group_by(years) %>% summarise(avg_time=round(mean(train_time),digits = 1), min_time=min(train_time), max_time=max(train_time), num_data=n()) %>% mutate(major="All degree"))
-
-
-# # summary country origin information
-# # keep 0 count in summary:
-# #   http://stackoverflow.com/questions/25956178
-# #   http://stackoverflow.com/questions/16073918
-# #   http://stackoverflow.com/questions/22523131
-# #     complete(b, fill = list(count_a = 0))
-# dcoAll <- dataGroup %>% group_by(country_origin) %>% summarise (Alumni = n()) %>% complete(country_origin, fill = list(Alumni = 0))
-# colnames(dcoAll)[colnames(dcoAll)=="country_origin"] <- "Country"
-# dcoYrs <- dataGroup %>% group_by(years,country_origin) %>% summarise (Alumni = n()) %>% complete(country_origin, fill = list(Alumni = 0))
-# colnames(dcoYrs)[colnames(dcoYrs)=="country_origin"] <- "Country"
-# 
-# # sort country by alumni number
-# ## https://trinkerrstuff.wordpress.com/2013/08/14/how-do-i-re-arrange-ordering-a-plot-revisited/
-# srtCTRYori <- factor(dcoYrs$Country, levels=dcoYrs$Country[order(unique(dcoYrs$Alumni))])
-# dcoYrs$Country <- srtCTRYori
-# srtCTRYori4 <- factor(dcoAll$Country, levels=dcoAll$Country[order(unique(dcoAll$Alumni))])
-# dcoAll$Country <- srtCTRYori4
-# 
-# # summary country job information
-# dcjAll <- dataGroup %>% group_by(job_country) %>% summarise (Alumni = n()) %>% complete(job_country, fill = list(Alumni = 0))
-# colnames(dcjAll)[colnames(dcjAll)=="job_country"] <- "Country"
-# dcjYrs <- dataGroup %>% group_by(years,job_country) %>% summarise (Alumni = n()) %>% complete(job_country, fill = list(Alumni = 0))
-# colnames(dcjYrs)[colnames(dcjYrs)=="job_country"] <- "Country"
-# 
-# # sort country by alumni number
-# # http://rstudio-pubs-static.s3.amazonaws.com/7433_4537ea5073dc4162950abb715f513469.html
-# #   x$name <- factor(x$name, levels = x$name[order(x$val)])
-# srtCTRYjob <- factor(dcjYrs$Country, levels=dcjYrs$Country[order(unique(dcjYrs$Alumni))])
-# dcjYrs$Country <- srtCTRYjob
-# srtCTRYjob4 <- factor(dcjAll$Country, levels=dcjAll$Country[order(unique(dcjAll$Alumni))])
-# dcjAll$Country <- srtCTRYjob4
-
-
-# # count the major vs job_sector, career_type, job_function
-# mjrSectAll <- dataGroup %>% group_by(major, job_sector) %>% summarise (cnt = n()) %>% mutate(freq=cnt/sum(cnt))
-# mjrTypeAll <- dataGroup %>% group_by(major, career_type) %>% summarise (cnt = n()) %>% mutate(freq=cnt/sum(cnt))
-# mjrFuncAll <- dataGroup %>% group_by(major, job_function) %>% summarise (cnt = n()) %>% mutate(freq=cnt/sum(cnt))
-# 
-# mjrSectYr <- dataGroup %>% group_by(years,major,job_sector) %>% summarise (cnt = n()) %>% mutate(freq=cnt/sum(cnt))
-# mjrTypeYr <- dataGroup %>% group_by(years,major,career_type) %>% summarise (cnt = n()) %>% mutate(freq=cnt/sum(cnt))
-# mjrFuncYr <- dataGroup %>% group_by(years,major,job_function) %>% summarise (cnt = n()) %>% mutate(freq=cnt/sum(cnt))

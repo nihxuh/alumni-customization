@@ -246,8 +246,8 @@ function(input, output, session) {
     }
   },height=dmHeight,width=dmWidth)
   
-  output$genderLtTxt  <- renderText({HTML("<p><strong>Likert Plot of Gender Distribution.</strong> <em>Upper panel</em>: Relative percentages of male and female WSU alumni in the selected time period(s).
-                                          <em>Lower panel</em>: Relative percentages of male and female WSU alumni in each job category during selected time period(s). 
+  output$genderLtTxt  <- renderText({HTML("<p><strong>Likert Plot of Gender Distribution.</strong> <em>Upper panel</em>: Relative percentages of male and female alumni in the selected time period(s).
+                                          <em>Lower panel</em>: Relative percentages of male and female alumni in each job category during selected time period(s). 
                                           The sum of male and female percentages in each row equals 100%. The number in the middle of each row indicates total number of alumni in a job category.</p><p>&nbsp;</p>")})
 
   output$genderPbPlot <- renderPlot({
@@ -332,7 +332,7 @@ function(input, output, session) {
     }
     p
   },height=dmHeight,width=dmWidth)
-  output$genderPbTxt  <- renderText({HTML("<p><strong>Bar Chart of Gender Distribution.</strong> Absolute number of male and female WSU alumni in each job category during selected time period(s).</p><p>&nbsp;</p>")})
+  output$genderPbTxt  <- renderText({HTML("<p><strong>Bar Chart of Gender Distribution.</strong> Absolute number of male and female alumni in each job category during selected time period(s).</p><p>&nbsp;</p>")})
   
   # output gender table
   output$genderTable <- renderTable({
@@ -813,7 +813,7 @@ function(input, output, session) {
     nBrks <- c(0, ceiling( as.numeric(sub("\\((.+),.*", "\\1", sclData)) ), s2Value, maxValue, maxValue)
     stData$value = Hmisc::cut2(stData$value, cuts=nBrks)
     
-    sTitle <- paste0('WSU Alumni Job Location in the United States (', tlYear, ')')
+    sTitle <- paste0('Alumni Job Location in the United States (', tlYear, ')')
     p <- state_choropleth(stData, title = sTitle, legend = "Number of\nalumni") + theme(axis.line=element_blank())
     p <- p + highlight_state(maxState)
     p
@@ -836,7 +836,7 @@ function(input, output, session) {
     pctSTUS = round(cntST / talUS, 3) * 100
     
     
-    HTML(paste0("<p><strong>WSU Alumni Job Location in the United States</strong> In ", slctYear, ", ", pctST,  
+    HTML(paste0("<p><strong>Alumni Job Location in the United States</strong> In ", slctYear, ", ", pctST,  
          "% of ALL alumni work in Michigan, and when only examining those working within the United States, 
          the proportion in Michigan is ", pctSTUS, "%. The next highest concentration of alumni includes those in California. 
          The remaining alumni are distributed across the United States in a manner approximately proportional to state populations.</p><p>&nbsp;</p>"))
